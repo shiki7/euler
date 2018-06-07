@@ -13,18 +13,16 @@ d(n)をnの真の約数の和と定義する。（真の約数とはn以外の�
 
 def yakusu_sum(a)
   sum=1
-  for i in 2..a-1
-    if a%i==0 then
-      sum+=i
-    end
+  (2..a-1).each do |i|
+    sum += i if a%i == 0
   end
   return sum
 end
 sum=0
-(2..10000).each{|i|
-  s=yakusu_sum(i)
-  if i<s&&i==yakusu_sum(s) then 
-    sum+=i+s
+(2..10000).each do |i|
+  s = yakusu_sum(i)
+  if i<s && i==yakusu_sum(s) then
+    sum += i + s
   end
-}
+end
 puts sum
